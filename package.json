@@ -1,41 +1,31 @@
 {
-  "name": "hotupdateSample",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
-    "start": "react-native start",
-    "test": "jest",
-    "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/output/index.android.bundle --assets-dest android/output",
-    "export-android": "mkdir -p android/output && react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/output/index.android.bundle --assets-dest android/output  && cd android && find output -type f | zip index.android.bundle.zip -@ && cd .. && rm -rf android/output",
-    "export-ios": "mkdir -p ios/output && react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/output/main.jsbundle --assets-dest ios/output && cd ios && find output -type f | zip main.jsbundle.zip -@ && cd .. && rm -rf ios/output"
+  "name": "react-native-ota-hot-update",
+  "version": "1.2.0",
+  "description": "Hot update for react native",
+  "main": "src/index",
+  "repository": "https://github.com/vantuan88291/react-native-ota-hot-update",
+  "author": "vantuan88291 <vantuan88291@gmail.com> (https://github.com/vantuan88291)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vantuan88291/react-native-ota-hot-update/issues"
   },
+  "homepage": "https://github.com/vantuan88291/react-native-ota-hot-update",
   "dependencies": {
-    "react": "18.3.1",
-    "react-native": "0.75.1",
-    "react-native-blob-util": "^0.19.11",
-    "react-native-ota-hot-update": "file:./RNhotupdate"
+    "buffer": "^6.0.3",
+    "isomorphic-git": "1.27.3"
   },
-  "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.75.1",
-    "@react-native/eslint-config": "0.75.1",
-    "@react-native/metro-config": "0.75.1",
-    "@react-native/typescript-config": "0.75.1",
-    "@types/react": "^18.2.6",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
-    "eslint": "^8.19.0",
-    "jest": "^29.6.3",
-    "prettier": "2.8.8",
-    "react-test-renderer": "18.3.1",
-    "typescript": "5.0.4"
+  "peerDependencies": {
+    "react-native": ">=0.63.4",
+    "react-native-fs": "*"
   },
-  "engines": {
-    "node": ">=18"
+  "create-react-native-library": {
+    "type": "module-legacy",
+    "languages": "kotlin-objc",
+    "version": "0.41.0"
+  },
+  "rnpm": {
+    "android": {
+      "packageInstance": "new OtaHotUpdate(getApplicationContext())"
+    }
   }
 }
