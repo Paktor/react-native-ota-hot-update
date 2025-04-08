@@ -103,7 +103,9 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
             File renameFolder = new File(destDir, "output_" + timestamp);
             if (extractedFolder.exists()) {
                 extractedFolder.renameTo(renameFolder);
-                bundleFilePath = bundleFilePath.replace(extractedFolder.getAbsolutePath(), renameFolder.getAbsolutePath());
+                if (bundleFilePath != null){
+                    bundleFilePath = bundleFilePath.replace(extractedFolder.getAbsolutePath(), renameFolder.getAbsolutePath());
+                }
             }
         }
         return bundleFilePath;
